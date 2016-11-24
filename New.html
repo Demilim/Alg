@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function Prime(n) {
+	  if (n == 1) return false;
+	  for (var i = 2; i <= Math.sqrt(n); i++) {
+	    if (n % i == 0) return false;
+	  }
+	  return true;
+	}
+
+	function rotate(number) {
+		return (number/10>>0)+(number%10)*Math.pow(10,Math.floor(Math.log(number)/Math.log(10)));
+	}	
+	 
+	function circular(N) {
+	  var counter = 0;
+	  for (var i = 2; i <= N; i++) {
+	    var isMatch = true;
+	    var check = i;
+	    for (j = 0; j < (""+i).length; ++j) {
+	      if (!Prime(check)) {
+	        isMatch = false;
+	        break;
+	      }
+	      check = rotate(check);
+	    }
+	    if (isMatch) counter++;
+	  }
+	  return counter;
+	}
+	 
+	
+	console.log(circular(1000000));
+	</script>
+</body>
+</html>
